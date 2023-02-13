@@ -72,12 +72,6 @@ const spinTop = new THREE.Mesh( geometry, material );
 spinTop.position.set(1, 3, -4);
 scene.add(spinTop);
 
-
-// doesnt work? needs shaders probably
-const light = new THREE.AmbientLight(0x404040); // soft white light
-light.position.set(1, 1, 1);
-scene.add(light);
-
 function animateShapes() {
     cube.rotation.x += 0.01;
     cube.rotation.y += 0.02;
