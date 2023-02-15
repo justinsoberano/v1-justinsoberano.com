@@ -1,5 +1,11 @@
 import * as THREE from './node_modules/three/build/three.module.js';
 import {OrbitControls} from './node_modules/three/examples/jsm/controls/OrbitControls.js';
+// import { EffectComposer } from '../node_modules/three/addons/postprocessing/EffectComposer.js';
+// import { RenderPass } from './node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+// import { GlitchPass } from '../node_modules/three/addons/postprocessing/GlitchPass.js';
+
+// TODO - import post processing passes
+
 let scene, camera, renderer, controller;
 
 // creates the renderer for the scene
@@ -21,13 +27,23 @@ controller.update();
 const axis = new THREE.AxesHelper(5);
 scene.add(axis);
 
+// Grid
+const gridMeshBottom = new THREE.GridHelper(1000, 1000, 0xff00a2, 0xff00a2);
+gridMeshBottom.position.y = -3;
+scene.add(gridMeshBottom);
+
+const gridMeshTop = new THREE.GridHelper(1000, 1000, 0xff7b00, 0xff7b00);
+gridMeshTop.position.y = 10;
+scene.add(gridMeshTop);
+
+
 // creates the yellow plane 
-const planeMesh = new THREE.PlaneGeometry(1000, 1000);
-const planeMaterial = new THREE.MeshBasicMaterial({color: 0x4D4D4D, side: THREE.DoubleSide});
-const plane = new THREE.Mesh(planeMesh, planeMaterial);
-plane.rotation.x = Math.PI / 2;
-plane.position.y = -3;
-scene.add(plane);
+// const planeMesh = new THREE.PlaneGeometry(1000, 1000);
+// const planeMaterial = new THREE.MeshBasicMaterial({color: 0x4D4D4D, side: THREE.DoubleSide});
+// const plane = new THREE.Mesh(planeMesh, planeMaterial);
+// plane.rotation.x = Math.PI / 2;
+// plane.position.y = -3;
+// scene.add(plane);
 
 
 // const mesh = new THREE.SphereGeometry(1, 16, 16);
