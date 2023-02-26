@@ -1,6 +1,5 @@
 import * as THREE from '/justinsoberano.com/node_modules/three/build/three.module.js';
 import {scene} from '/justinsoberano.com/src/renderer/render.js'
-import {TWEEN} from '/justinsoberano.com/node_modules/three/examples/jsm/libs/tween.module.min.js';
 
 // Bottom grid
 const gridMeshBottom = new THREE.GridHelper(1000, 400, 0xff00a2, 0xff00a2);
