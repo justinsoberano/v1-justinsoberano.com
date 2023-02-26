@@ -1,7 +1,5 @@
 import * as THREE from '/justinsoberano.com/node_modules/three/build/three.module.js';
 import {OrbitControls} from '/justinsoberano.com/node_modules/three/examples/jsm/controls/OrbitControls.js';
-import {TextGeometry} from '/justinsoberano.com/node_modules/three/examples/jsm/geometries/TextGeometry.js';
-import {FontLoader} from '/justinsoberano.com/node_modules/three/examples/jsm/loaders/FontLoader.js';
 
 let scene, camera, renderer, controller;
 
@@ -9,6 +7,7 @@ let scene, camera, renderer, controller;
 renderer = new THREE.WebGLRenderer({antialias: true,});
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000);
+renderer.shadowMap.enabled = true;
 
 // Makes everything crisp :P
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -29,7 +28,7 @@ scene = new THREE.Scene();
 // creates the camera
 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 controller = new OrbitControls(camera, renderer.domElement);
-camera.position.set(7, 1, 7);
+camera.position.set(6, 2, 6);
 controller.addEventListener( 'change', ()=>{renderer.render(scene, camera)} );
 controller.update();
 
