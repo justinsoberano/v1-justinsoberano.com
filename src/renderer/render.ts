@@ -33,7 +33,5 @@ controller.addEventListener( 'change', ()=>{renderer.render(scene, camera)} );
 controller.update();
 
 // creates the axis that helps with positioning
-// const axis = new THREE.AxesHelper(5);
-// scene.add(axis);
-
-export {scene, camera, renderer, controller};
+const axis = new THREE.AxesHelper(5);
+scene.add(axis);

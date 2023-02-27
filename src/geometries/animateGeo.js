@@ -1,9 +1,21 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, gridMeshBottom} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, line} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
+import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
+import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
+import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+
 
 let clock = new THREE.Clock();
+
+const renderScene = new RenderPass(scene, camera);
+const composer = new EffectComposer(renderer);
+composer.addPass(renderScene);
+
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1, 2, 0.1);
+composer.addPass(bloomPass);
+
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 2000)
@@ -82,13 +94,15 @@ function animateShapes() {
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
 
-    gridMeshBottom.position.y = Math.sin(time) * 0.1 - 3;
-    gridMeshBottom.position.z += 0.01;
-    gridMeshBottom.position.x += 0.01;
+    line.position.y = Math.sin(time) * 0.1 - 3;
+    line.position.z += 0.01;
+    line.position.x += 0.01;
 
     TWEEN.update();
 
-    renderer.render(scene, camera);    
+    // renderer.render(scene, camera);    
+    composer.render();
+
 }
 
 renderer.setAnimationLoop(animateShapes);
