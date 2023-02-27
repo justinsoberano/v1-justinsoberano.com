@@ -1,5 +1,5 @@
-import * as THREE from '/justinsoberano.com/node_modules/three/build/three.module.js';
-import {scene} from '/justinsoberano.com/src/renderer/render.js'
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {scene} from '/src/renderer/render.js'
 
 // Bottom grid
 const gridMeshBottom = new THREE.GridHelper(1000, 400, 0xff00a2, 0xff00a2);

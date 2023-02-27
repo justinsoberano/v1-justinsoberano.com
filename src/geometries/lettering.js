@@ -1,11 +1,11 @@
-import * as THREE from '/justinsoberano.com/node_modules/three/build/three.module.js';
-import {FontLoader} from '/justinsoberano.com/node_modules/three/examples/jsm/loaders/FontLoader.js';
-import {TextGeometry} from '/justinsoberano.com/node_modules/three/examples/jsm/geometries/TextGeometry.js';
-import {scene} from '/justinsoberano.com/src/renderer/render.js';
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {FontLoader} from '/node_modules/three/examples/jsm/loaders/FontLoader.js';
+import {TextGeometry} from '/node_modules/three/examples/jsm/geometries/TextGeometry.js';
+import {scene} from '/src/renderer/render.js';
 
 const loader = new FontLoader();
 
-loader.load('/justinsoberano.com/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function(font) {
+loader.load('/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function(font) {
     const textGeometry = new TextGeometry('justinsoberano.com', {
         font: font,
         size: 1,

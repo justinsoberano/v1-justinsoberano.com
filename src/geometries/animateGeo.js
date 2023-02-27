@@ -1,7 +1,7 @@
-import * as THREE from '/justinsoberano.com/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, gridMeshBottom} from '/justinsoberano.com/src/geometries/geometry.js';
-import {scene, camera, renderer} from '/justinsoberano.com/src/renderer/render.js';
-import {TWEEN} from '/justinsoberano.com/node_modules/three/examples/jsm/libs/tween.module.min.js';
+import * as THREE from '/node_modules/three/build/three.module.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, gridMeshBottom} from '/src/geometries/geometry.js';
+import {scene, camera, renderer} from '/src/renderer/render.js';
+import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 
 let clock = new THREE.Clock();
 
@@ -88,7 +88,7 @@ function animateShapes() {
 
     TWEEN.update();
 
-    renderer.render(scene, camera);
+    renderer.render(scene, camera);    
 }
 
 renderer.setAnimationLoop(animateShapes);
