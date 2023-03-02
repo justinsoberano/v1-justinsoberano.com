@@ -6,16 +6,28 @@ import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/Render
 import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
 import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-
 let clock = new THREE.Clock();
 
-const renderScene = new RenderPass(scene, camera);
 const composer = new EffectComposer(renderer);
+const renderScene = new RenderPass(scene, camera);
+
+// const badTVPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/BadTVShader.js', 'vertexShader');
+// const rgbPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/RGBShiftShader.js');
+// const filmPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/FilmShader.js');
+// const staticPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/StaticShader.js');
+// const copyPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/CopyShader.js');
+
 composer.addPass(renderScene);
 
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1, 2, 0.1);
-composer.addPass(bloomPass);
+// composer.addPass(filmPass);
+// composer.addPass(badTVPass);
+// composer.addPass(rgbPass);
+// composer.addPass(staticPass);
+// composer.addPass(copyPass);
+// copyPass.renderToScreen = true;
 
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1, 2.2, 0.1);
+composer.addPass(bloomPass);
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 2000)

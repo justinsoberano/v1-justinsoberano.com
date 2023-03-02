@@ -10,7 +10,7 @@ renderer.setClearColor(0x000000);
 renderer.shadowMap.enabled = true;
 
 // Makes everything crisp :P
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(window.devicePixelRatio / 1.5);
 document.body.appendChild(renderer.domElement);
 
 // resizes the scene when the window is resized
@@ -31,6 +31,13 @@ controller = new OrbitControls(camera, renderer.domElement);
 camera.position.set(6, 2, 6);
 controller.addEventListener( 'change', ()=>{renderer.render(scene, camera)} );
 controller.update();
+
+const renderPass = new THREE.RenderPass(scene, camera);
+const badTVPass = new THREE.ShaderPass(THREE.BadTVShader);
+const rgbPass = new THREE.ShaderPass(THREE.RGBShiftShader);
+const filmPass = new THREE.ShaderPass(THREE.FilmShader);
+const staticPass = new THREE.ShaderPass(THREE.StaticShader);
+const copyPass = new THREE.ShaderPass(THREE.CopyShader);
 
 // creates the axis that helps with positioning
 // const axis = new THREE.AxesHelper(5);
