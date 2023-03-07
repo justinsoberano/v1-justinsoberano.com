@@ -95,6 +95,26 @@ new TWEEN.Tween(spinTop.rotation)
     .start();
 ;
 
+new TWEEN.Tween(camera.rotation)
+    .to({z:0.1}, 2000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
+new TWEEN.Tween(camera.position)
+    .to({y: 3}, 2000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
+new TWEEN.Tween(line.position)
+    .to({y: 3}, 2000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
 
 function animateShapes() {
 
@@ -106,7 +126,6 @@ function animateShapes() {
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
 
-    line.position.y = Math.sin(time) * 0.1 - 3;
     line.position.z += 0.01;
     line.position.x += 0.01;
 
