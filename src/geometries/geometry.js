@@ -6,34 +6,54 @@ const gridMeshBottom = new THREE.GridHelper(1000, 400, 0xff00a2, 0xff00a2);
 gridMeshBottom.position.y = -3;
 // scene.add(gridMeshBottom);
 
-const plane = new THREE.PlaneGeometry(1000, 1000, 100, 100);
-plane.rotateX(-Math.PI / 2);
-const meshPhone = new THREE.MeshPhongMaterial({color: 0xff00a2, side: THREE.DoubleSide});
-const normalMesh = new THREE.MeshNormalMaterial();
-const planeMaterial = new THREE.WireframeGeometry(plane);
+// const plane = new THREE.PlaneGeometry(1000, 1000, 100, 100);
+// plane.rotateX(-Math.PI / 2);
+// const planeMaterial = new THREE.WireframeGeometry(plane);
+// const line = new THREE.LineSegments(planeMaterial, new THREE.LineBasicMaterial({color: 0xff00a2}));
+// line.material.depthTest = true;
+// line.material.opacity = 0.5;
+// line.material.transparent = true;
+// line.position.y = -3;
 
-const light = new THREE.PointLight(0xffffff, 1, 1000);
-light.position.set(1, 4, 0);
-
-scene.add(light)
-
-const line = new THREE.LineSegments(planeMaterial, new THREE.LineBasicMaterial({color: 0xff00a2}));
-line.material.depthTest = true;
-line.material.opacity = 0.5;
-line.material.transparent = true;
-line.position.y = -3;
-
-scene.add(line);
+// scene.add(line);
 
 // const line = new THREE.Mesh(plane, meshPhone);
 // scene.add(line)
 
-const {array} = line.geometry.attributes.position;
-for(let i = 0; i < array.length; i+=3) {
-    array[i + 1] += Math.random() * -45;
-}
+// const {array} = line.geometry.attributes.position;
+// for(let i = 0; i < array.length; i+=3) {
+//     array[i + 1] += Math.random() * -45;
+// }
 
-console.log(gridMeshBottom)
+// console.log(gridMeshBottom)
+
+const bottomPlane = new THREE.PlaneGeometry(100, 1000, 10, 10);
+const planeMat = new THREE.MeshBasicMaterial({color: 0x2b2b2b});
+const bottomPlaneMesh = new THREE.Mesh(bottomPlane, planeMat);
+bottomPlaneMesh.rotateX(-Math.PI / 3);
+bottomPlaneMesh.rotateZ(-Math.PI / 4);
+bottomPlaneMesh.rotateY(-0.6);
+bottomPlaneMesh.position.z = -1;
+bottomPlaneMesh.position.x = 3;
+bottomPlaneMesh.position.y = -2;
+
+const newPlane = new THREE.PlaneGeometry(1000, 1000, 100, 100);
+const bottomPlane2 = new THREE.WireframeGeometry(newPlane);
+const bottomPlaneMesh2 = new THREE.LineSegments(bottomPlane2, new THREE.LineBasicMaterial({color: 0x000000}));
+bottomPlaneMesh2.material.depthTest = true;
+bottomPlaneMesh2.material.opacity = 1;
+bottomPlaneMesh2.material.transparent = true;
+bottomPlaneMesh2.rotateX(-Math.PI / 3);
+bottomPlaneMesh2.rotateZ(-Math.PI / 4);
+bottomPlaneMesh2.rotateY(-0.6);
+bottomPlaneMesh2.position.z = -1;
+bottomPlaneMesh2.position.x = 3;
+bottomPlaneMesh2.position.y = -2;
+bottomPlaneMesh2.wireframeLinewidth = 10;
+
+
+scene.add(bottomPlaneMesh2);
+scene.add(bottomPlaneMesh);
 
 // Top grid
 // const gridMeshTop = new THREE.GridHelper(1000, 200, 0xff7b00, 0xff7b00);
@@ -75,4 +95,4 @@ const spinTop = new THREE.Mesh( geometry, material );
 spinTop.position.set(1, -10, -4);
 scene.add(spinTop);
 
-export {cube, cube2, dodecahedron, tetrahedron, spinTop, gridMeshBottom, line};
+export {cube, cube2, dodecahedron, tetrahedron, spinTop};

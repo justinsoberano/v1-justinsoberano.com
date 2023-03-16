@@ -1,5 +1,5 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, line} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
@@ -109,12 +109,12 @@ new TWEEN.Tween(camera.position)
     .start();
 ;
 
-new TWEEN.Tween(line.position)
-    .to({y: 3}, 2000)
-    .easing(TWEEN.Easing.Cubic.Out)
-    .yoyo(true)
-    .start();
-;
+// new TWEEN.Tween(line.position)
+//     .to({y: 3}, 2000)
+//     .easing(TWEEN.Easing.Cubic.Out)
+//     .yoyo(true)
+//     .start();
+// ;
 
 function animateShapes() {
 
@@ -126,8 +126,8 @@ function animateShapes() {
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
 
-    line.position.z += 0.01;
-    line.position.x += 0.01;
+    // line.position.z += 0.01;
+    // line.position.x += 0.01;
 
     TWEEN.update();
 

@@ -6,30 +6,26 @@ import {scene} from '/src/renderer/render.js';
 const loader = new FontLoader();
 
 loader.load('/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function(font) {
-    const textGeometry = new TextGeometry('justinsoberano.com', {
+    const firstName = new TextGeometry('justin', {
         font: font,
-        size: 1,
+        size: 2,
+        height: 0.8,
+    });
+    const lastName = new TextGeometry('soberano', {
+        font: font,
+        size: 2,
         height: 0.8,
     });
     const textMaterial = new THREE.MeshNormalMaterial();
-    const text = new THREE.Mesh(textGeometry, textMaterial);
-    text.position.set(-8.5, 4, 0);
-    text.rotation.set(0, 0.8, 0);
 
-    scene.add(text);
+    const first = new THREE.Mesh(firstName, textMaterial);
+    first.position.set(-4, 2, -6);
+    first.rotation.set(-0.4, 0.8, 0.6);
 
-    // new TWEEN.Tween(text.position)
-    //     .to({y: 4.5}, 2000)
-    //     .easing(TWEEN.Easing.Cubic.Out)
-    //     .yoyo(true)
-    //     .start();
-    // ;
+    const last = new THREE.Mesh(lastName, textMaterial);
+    last.position.set(-4, -0.5, -6);
+    last.rotation.set(-0.4, 0.8, 0.6);
 
-    // new TWEEN.Tween(text.rotation)
-    //     .to({ y: 1.6 }, 2000)
-    //     .easing(TWEEN.Easing.Quadratic.InOut)
-    //     .yoyo(true)
-    //     .start();
-    // ;   
-
+    scene.add(last);
+    scene.add(first);
 });
