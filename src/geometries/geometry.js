@@ -28,7 +28,7 @@ gridMeshBottom.position.y = -3;
 // console.log(gridMeshBottom)
 
 const bottomPlane = new THREE.PlaneGeometry(100, 1000, 10, 10);
-const planeMat = new THREE.MeshBasicMaterial({color: 0x2b2b2b});
+const planeMat = new THREE.MeshBasicMaterial({color: 0x373737});
 const bottomPlaneMesh = new THREE.Mesh(bottomPlane, planeMat);
 bottomPlaneMesh.rotateX(-Math.PI / 3);
 bottomPlaneMesh.rotateZ(-Math.PI / 4);
@@ -87,10 +87,10 @@ tetrahedron.position.set(-3, 10, -2);
 scene.add(tetrahedron);
 
 // SpinTop mesh
-const geometry = new THREE.SphereGeometry( 1, 64, 2);
+const geometry = new THREE.IcosahedronGeometry(1, 0);
 const material = new THREE.MeshNormalMaterial();
 const spinTop = new THREE.Mesh( geometry, material );
-spinTop.position.set(1, 10, -4);
+spinTop.position.set(1, 10, 3);
 scene.add(spinTop);
 
 export {cube, cube2, dodecahedron, tetrahedron, spinTop};
