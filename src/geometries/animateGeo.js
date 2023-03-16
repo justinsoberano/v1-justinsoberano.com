@@ -9,11 +9,11 @@ import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/U
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
 composer.addPass(renderScene);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1, 2.2, 0.1);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 1, 2.2, 0.1);
 composer.addPass(bloomPass);
 
 new TWEEN.Tween(cube.position)
-    .to({y: 1}, 2000)
+    .to({y: 1}, 4000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
@@ -27,7 +27,7 @@ new TWEEN.Tween(cube.rotation)
 ;
 
 new TWEEN.Tween(cube2.position)
-    .to({y: 1}, 3000)
+    .to({y: 4}, 3000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
@@ -105,7 +105,7 @@ function animateShapes() {
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
-
+    ;
     TWEEN.update();
     composer.render();
 
