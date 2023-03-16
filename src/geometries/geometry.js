@@ -28,7 +28,7 @@ gridMeshBottom.position.y = -3;
 // console.log(gridMeshBottom)
 
 const bottomPlane = new THREE.PlaneGeometry(100, 1000, 10, 10);
-const planeMat = new THREE.MeshBasicMaterial({color: 0x373737});
+const planeMat = new THREE.MeshBasicMaterial({color: 0x343535});
 const bottomPlaneMesh = new THREE.Mesh(bottomPlane, planeMat);
 bottomPlaneMesh.rotateX(-Math.PI / 3);
 bottomPlaneMesh.rotateZ(-Math.PI / 4);

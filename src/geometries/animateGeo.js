@@ -86,14 +86,14 @@ new TWEEN.Tween(camera.rotation)
 ;
 
 new TWEEN.Tween(camera.position)
-    .to({x: 6}, 3000)
+    .to({x: 6}, 2500)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
 ;
 
 new TWEEN.Tween(camera.position)
-    .to({z: 6}, 3000)
+    .to({z: 6}, 2500)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
