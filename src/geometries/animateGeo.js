@@ -6,26 +6,9 @@ import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/Render
 import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
 import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 
-let clock = new THREE.Clock();
-
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
-
-// const badTVPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/BadTVShader.js', 'vertexShader');
-// const rgbPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/RGBShiftShader.js');
-// const filmPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/FilmShader.js');
-// const staticPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/StaticShader.js');
-// const copyPass = new ShaderPass('/node_modules/three/examples/jsm/postprocessing/CopyShader.js');
-
 composer.addPass(renderScene);
-
-// composer.addPass(filmPass);
-// composer.addPass(badTVPass);
-// composer.addPass(rgbPass);
-// composer.addPass(staticPass);
-// composer.addPass(copyPass);
-// copyPass.renderToScreen = true;
-
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1, 2.2, 0.1);
 composer.addPass(bloomPass);
 
@@ -103,39 +86,28 @@ new TWEEN.Tween(camera.rotation)
 ;
 
 new TWEEN.Tween(camera.position)
-    .to({y: 3}, 2000)
+    .to({x: 6}, 3000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
 ;
 
-// new TWEEN.Tween(line.position)
-//     .to({y: 3}, 2000)
-//     .easing(TWEEN.Easing.Cubic.Out)
-//     .yoyo(true)
-//     .start();
-// ;
+new TWEEN.Tween(camera.position)
+    .to({z: 6}, 3000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
 
 function animateShapes() {
-
-    let time = clock.getElapsedTime();
-    
     cube.rotation.x += 0.01; cube.rotation.y += 0.02; cube.rotation.z += 0.02;
     cube2.rotation.x += 0.01; cube2.rotation.y += 0.01; cube2.rotation.z += 0.03;
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
 
-    // line.position.z += 0.01;
-    // line.position.x += 0.01;
-
     TWEEN.update();
-
-    // renderer.render(scene, camera);    
     composer.render();
 
 }
-
 renderer.setAnimationLoop(animateShapes);
-
-export {clock};

@@ -18,11 +18,10 @@ window.addEventListener('resize', function() {
     camera.aspect = width / height;
     camera.updateProjectionMatrix(); 
 });
+
 scene = new THREE.Scene();
 camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-controller = new OrbitControls(camera, renderer.domElement);
-camera.position.set(6, 2, 6);
-controller.addEventListener( 'change', ()=>{renderer.render(scene, camera)} );
-controller.update();
+camera.position.set(-6, 2, -6);
+camera.rotation.set(-0.32, 0.76, 0.225);
 
-export {scene, camera, renderer, controller};
+export {scene, camera, renderer};

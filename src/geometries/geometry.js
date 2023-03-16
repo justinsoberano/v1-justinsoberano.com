@@ -49,8 +49,6 @@ bottomPlaneMesh2.rotateY(-0.6);
 bottomPlaneMesh2.position.z = -1;
 bottomPlaneMesh2.position.x = 3;
 bottomPlaneMesh2.position.y = -2;
-bottomPlaneMesh2.wireframeLinewidth = 10;
-
 
 scene.add(bottomPlaneMesh2);
 scene.add(bottomPlaneMesh);
