@@ -79,7 +79,7 @@ new TWEEN.Tween(spinTop.rotation)
 ;
 
 new TWEEN.Tween(camera.rotation)
-    .to({z:0.1}, 2000)
+    .to({z:0.2}, 2000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
