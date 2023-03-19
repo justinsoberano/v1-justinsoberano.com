@@ -6,7 +6,7 @@ import {
 	Vector4,
 	DepthTexture,
 	NearestFilter
-} from 'three';
+} from '../../../build/three.module.js';
 import { Pass, FullScreenQuad } from './Pass.js';
 
 class RenderPixelatedPass extends Pass {

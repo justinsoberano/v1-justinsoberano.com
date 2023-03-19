@@ -3,7 +3,7 @@ import {FontLoader} from '/node_modules/three/examples/jsm/loaders/FontLoader.js
 import {TextGeometry} from '/node_modules/three/examples/jsm/geometries/TextGeometry.js';
 import {scene} from '/src/renderer/render.js';
 
-const loader = new FontLoader();
+export const loader = new FontLoader();
 
 loader.load('/node_modules/three/examples/fonts/helvetiker_regular.typeface.json', function(font) {
     const firstName = new TextGeometry('justin', {
