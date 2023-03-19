@@ -78,7 +78,7 @@ new TWEEN.Tween(tetrahedron.rotation)
 
 new TWEEN.Tween(spinTop.position)
     .to({y: 2}, 2500)
-    .easing(TWEEN.Easing.Cubic.Out)
+    .easing(TWEEN.Easing.Back.Out)
     .yoyo(true)
     .start();
 ;
@@ -90,8 +90,8 @@ new TWEEN.Tween(spinTop.rotation)
 ;
 
 new TWEEN.Tween(camera.rotation)
-    .to({z:0.2}, 2000)
-    .easing(TWEEN.Easing.Cubic.Out)
+    .to({z:0.2}, 4000)
+    .easing(TWEEN.Easing.Exponential.Out)
     .yoyo(true)
     .start();
 ;
