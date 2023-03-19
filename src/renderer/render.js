@@ -2,17 +2,26 @@ import * as THREE from '/node_modules/three/build/three.module.js';
 
 let scene, camera, renderer;
 
+// Creates the renderer with antialiasing enabled
 renderer = new THREE.WebGLRenderer({
     antialias: true,
 });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000);
-renderer.shadowMap.enabled = true;
 
-renderer.setPixelRatio(window.devicePixelRatio / 1.5);
+renderer.shadowMap.enabled = true; // may not be needed as it is enabled by default????
+
+// Reduces pixel ratio on high DPI displays for better performance
+if (window.devicePixelRatio > 1) {
+    renderer.setPixelRatio(window.devicePixelRatio / 2);
+} else {
+    renderer.setPixelRatio(window.devicePixelRatio);
+}
+
 document.body.appendChild(renderer.domElement);
 
+// Resize the renderer when the window resizes, also updates the camera aspect ratio
 window.addEventListener('resize', function() {
     var width = window.innerWidth;
     var height = window.innerHeight;
@@ -21,25 +30,12 @@ window.addEventListener('resize', function() {
     camera.updateProjectionMatrix(); 
 });
 
+// Creates the scene!!!!! :D
 scene = new THREE.Scene();
-camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(0, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(-10, 2.5, -10);
+
+// These are the default camera rotation values
 camera.rotation.set(-0.32 , 0.76, 0.225);
 
-export const addAudioListenerToCamera = (camera) => {
-    camera.add(createAudioListener());
-};
-export const createAudioListener = () => {
-const listener = new THREE.AudioListener();
-const sound = new THREE.Audio(listener);
-audioLoader.load(songUrl, (buffer) => {
-    console.log("loaded");
-    sound.setBuffer(buffer);
-    sound.setLoop(true);
-    sound.setVolume(0.5);
-    sound.play();
-});
-return listener;
-};
-
-export {scene, camera, renderer};
+export {scene, camera, renderer}; //exportation station 
