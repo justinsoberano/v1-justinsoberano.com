@@ -2,13 +2,15 @@ import * as THREE from '/node_modules/three/build/three.module.js';
 
 let scene, camera, renderer;
 
-renderer = new THREE.WebGLRenderer({antialias: true,});
+renderer = new THREE.WebGLRenderer({
+    antialias: true,
+});
+
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000);
 renderer.shadowMap.enabled = true;
-console.log(window.devicePixelRatio);
 
-renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setPixelRatio(window.devicePixelRatio / 1.5);
 document.body.appendChild(renderer.domElement);
 
 window.addEventListener('resize', function() {

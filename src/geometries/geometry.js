@@ -1,6 +1,10 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
 import {scene} from '/src/renderer/render.js';
 
+
+// condense code down, example 
+// const cube = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({color: 0xff0000}));
+
 // Bottom grid
 const gridMeshBottom = new THREE.GridHelper(1000, 400, 0xff00a2, 0xff00a2);
 gridMeshBottom.position.y = -3;
@@ -37,7 +41,7 @@ bottomPlaneMesh.position.z = -1;
 bottomPlaneMesh.position.x = 3;
 bottomPlaneMesh.position.y = -2;
 
-const newPlane = new THREE.PlaneGeometry(1000, 1000, 100, 100);
+const newPlane = new THREE.PlaneGeometry(100, 1000, 100, 100);
 const bottomPlane2 = new THREE.WireframeGeometry(newPlane);
 const bottomPlaneMesh2 = new THREE.LineSegments(bottomPlane2, new THREE.LineBasicMaterial({color: 0x000000}));
 bottomPlaneMesh2.material.depthTest = true;
@@ -93,4 +97,18 @@ const spinTop = new THREE.Mesh( geometry, material );
 spinTop.position.set(1, 10, 3);
 scene.add(spinTop);
 
-export {cube, cube2, dodecahedron, tetrahedron, spinTop};
+const octahedron = new THREE.OctahedronGeometry(125, 3);
+const octahedronMaterial = new THREE.MeshPhongMaterial({color: 0x910f00});
+const octahedronMesh = new THREE.Mesh(octahedron, octahedronMaterial);
+octahedronMesh.position.set(-100, -100, -250);
+scene.add(octahedronMesh);
+
+const light = new THREE.PointLight(0xff0000, 4, 75);
+light.position.set( -100, 50, -100 );
+scene.add( light );
+
+// const light2 = new THREE.AmbientLight( 0x404040 ); // soft white light
+// scene.add(light2);
+
+
+export {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh};

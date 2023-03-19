@@ -1,16 +1,23 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
 import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
 import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import {FilmPass} from '/node_modules/three/examples/jsm/postprocessing/FilmPass.js';
+import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
 composer.addPass(renderScene);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 0.8, 2.2, 0.2);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 0.7, 2.2, 0.2);
 composer.addPass(bloomPass);
+const filmPass = new FilmPass(0.2, 1, 750, false);
+composer.addPass(filmPass);
+const glitchPass = new GlitchPass();
+composer.addPass(glitchPass);
+// const vignettePass = new THREE.ShaderPass(THREE.VignetteShader);
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 4000)
@@ -99,12 +106,27 @@ new TWEEN.Tween(camera.position)
     .start();
 ;
 
+new TWEEN.Tween(octahedronMesh.position)
+    .to({y: 2}, 2500)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
+new TWEEN.Tween(octahedronMesh.rotation)
+    .to({y: 3 * Math.PI}, 2500)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
 function animateShapes() {
     cube.rotation.x += 0.01; cube.rotation.y += 0.02; cube.rotation.z += 0.02;
     cube2.rotation.x += 0.01; cube2.rotation.y += 0.01; cube2.rotation.z += 0.03;
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
+    octahedronMesh.rotation.x += 0.02; octahedronMesh.rotation.y += 0.01; octahedronMesh.rotation.z += 0.02;
     ;
     TWEEN.update();
     composer.render();
