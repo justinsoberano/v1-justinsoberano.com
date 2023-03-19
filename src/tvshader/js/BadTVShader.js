@@ -1,3 +1,4 @@
+import * as THREE from '/node_modules/three/build/three.module.js';
 /**
  * @author Felix Turner / www.airtight.cc / @felixturner
  *

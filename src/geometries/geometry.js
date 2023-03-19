@@ -12,10 +12,11 @@ import {scene} from '/src/renderer/render.js';
 // gridMeshBottom.position.y = -3;
 // scene.add(gridMeshBottom);
 
-// const plane = new THREE.PlaneGeometry(1000, 1000, 100, 100);
-// plane.rotateX(-Math.PI / 2);
+// const plane = new THREE.PlaneGeometry(1000, 1000, 40, 40);
+// plane.rotateX(-Math.PI / 3);
 // const planeMaterial = new THREE.WireframeGeometry(plane);
-// const line = new THREE.LineSegments(planeMaterial, new THREE.LineBasicMaterial({color: 0xff00a2}));
+// export const line = new THREE.LineSegments(planeMaterial, new THREE.LineBasicMaterial({color: 0xff00a2}));
+
 // line.material.depthTest = true;
 // line.material.opacity = 0.5;
 // line.material.transparent = true;
@@ -25,6 +26,7 @@ import {scene} from '/src/renderer/render.js';
 
 // const line = new THREE.Mesh(plane, meshPhone);
 // scene.add(line)
+// line.position.y = 100;
 
 // const {array} = line.geometry.attributes.position;
 // for(let i = 0; i < array.length; i+=3) {

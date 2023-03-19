@@ -9,6 +9,7 @@ import {FilmPass} from '/node_modules/three/examples/jsm/postprocessing/FilmPass
 import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
 import {VignetteShader} from '/node_modules/three/examples/jsm/shaders/VignetteShader.js';
 import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/ShaderPass.js';
+import {FilmShader} from '/node_modules/three/examples/jsm/shaders/FilmShader.js';
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
@@ -22,6 +23,8 @@ const glitchPass = new GlitchPass();
 composer.addPass(glitchPass);
 const shaderPass = new ShaderPass(VignetteShader);
 composer.addPass(shaderPass);
+const shaderPass2 = new ShaderPass(FilmShader);
+composer.addPass(shaderPass2);
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 4000)
