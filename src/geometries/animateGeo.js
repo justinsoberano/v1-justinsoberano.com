@@ -7,6 +7,8 @@ import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/Ef
 import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import {FilmPass} from '/node_modules/three/examples/jsm/postprocessing/FilmPass.js';
 import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
+import {VignetteShader} from '/node_modules/three/examples/jsm/shaders/VignetteShader.js';
+import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/ShaderPass.js';
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
@@ -17,7 +19,8 @@ const filmPass = new FilmPass(0.2, 1, 750, false);
 composer.addPass(filmPass);
 const glitchPass = new GlitchPass();
 composer.addPass(glitchPass);
-// const vignettePass = new THREE.ShaderPass(THREE.VignetteShader);
+const shaderPass = new ShaderPass(VignetteShader);
+composer.addPass(shaderPass);
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 4000)
