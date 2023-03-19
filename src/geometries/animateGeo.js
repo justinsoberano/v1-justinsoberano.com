@@ -125,6 +125,13 @@ new TWEEN.Tween(octahedronMesh.rotation)
     .start();
 ;
 
+new TWEEN.Tween(camera.fov)
+    .to({fov: 1}, 2500)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
 function animateShapes() {
 
     const time = clock.getElapsedTime();
