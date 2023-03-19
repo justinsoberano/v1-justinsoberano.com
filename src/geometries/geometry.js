@@ -134,7 +134,8 @@ scene.add(light);
 // light2.position.set( -320, 70, -100 );
 // scene.add( light );
 
-/* Universal Mesh Creator, SUBSTATIONALLY reduces code for creating geometries */
+
+/* Universal Mesh Creator, reduces duplicate code for creating geometries */
 function UniversalMeshCreator(shape, material, x, y, z) {
     const mesh = new THREE.Mesh(shape, material);
     mesh.position.set(x, y, z);
