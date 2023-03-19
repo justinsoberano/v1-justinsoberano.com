@@ -26,4 +26,24 @@ camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight,
 camera.position.set(-10, 2.5, -10);
 camera.rotation.set(-0.32 , 0.76, 0.225);
 
+export const addAudioListenerToCamera = (camera) => {
+    camera.add(createAudioListener());
+  };
+  
+export const createAudioListener = () => {
+const listener = new THREE.AudioListener();
+
+const sound = new THREE.Audio(listener);
+
+audioLoader.load(songUrl, (buffer) => {
+    console.log("loaded");
+    sound.setBuffer(buffer);
+    sound.setLoop(true);
+    sound.setVolume(0.5);
+    sound.play();
+});
+
+return listener;
+};
+
 export {scene, camera, renderer};

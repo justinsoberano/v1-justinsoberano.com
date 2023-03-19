@@ -12,6 +12,7 @@ import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/Shader
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
+const clock = new THREE.Clock();
 composer.addPass(renderScene);
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 0.7, 2.2, 0.2);
 composer.addPass(bloomPass);
@@ -124,12 +125,19 @@ new TWEEN.Tween(octahedronMesh.rotation)
 ;
 
 function animateShapes() {
+
+    const time = clock.getElapsedTime();
     cube.rotation.x += 0.01; cube.rotation.y += 0.02; cube.rotation.z += 0.02;
     cube2.rotation.x += 0.01; cube2.rotation.y += 0.01; cube2.rotation.z += 0.03;
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
     octahedronMesh.rotation.x += 0.02; octahedronMesh.rotation.y += 0.01; octahedronMesh.rotation.z += 0.02;
+    cube.position.y += Math.sin(time) * 0.003;
+    cube2.position.y += Math.cos(time) * 0.006;
+    dodecahedron.position.y += Math.sin(time) * 0.007;
+    tetrahedron.position.y += Math.cos(time) * 0.005;
+    spinTop.position.y += Math.cos(time) * 0.004;
     ;
     TWEEN.update();
     composer.render();

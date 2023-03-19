@@ -97,8 +97,8 @@ const spinTop = new THREE.Mesh( geometry, material );
 spinTop.position.set(1, 10, 3);
 scene.add(spinTop);
 
-const octahedron = new THREE.OctahedronGeometry(125, 3);
-const octahedronMaterial = new THREE.MeshPhongMaterial({color: 0x910f00});
+const octahedron = new THREE.OctahedronGeometry(125, 5);
+const octahedronMaterial = new THREE.MeshPhongMaterial({color: 0x910f00, flatShading: true});
 const octahedronMesh = new THREE.Mesh(octahedron, octahedronMaterial);
 octahedronMesh.position.set(-100, -100, -250);
 scene.add(octahedronMesh);
