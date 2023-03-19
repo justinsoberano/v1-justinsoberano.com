@@ -28,13 +28,10 @@ camera.rotation.set(-0.32 , 0.76, 0.225);
 
 export const addAudioListenerToCamera = (camera) => {
     camera.add(createAudioListener());
-  };
-  
+};
 export const createAudioListener = () => {
 const listener = new THREE.AudioListener();
-
 const sound = new THREE.Audio(listener);
-
 audioLoader.load(songUrl, (buffer) => {
     console.log("loaded");
     sound.setBuffer(buffer);
@@ -42,7 +39,6 @@ audioLoader.load(songUrl, (buffer) => {
     sound.setVolume(0.5);
     sound.play();
 });
-
 return listener;
 };
 

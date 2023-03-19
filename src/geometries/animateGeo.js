@@ -9,7 +9,6 @@ import {FilmPass} from '/node_modules/three/examples/jsm/postprocessing/FilmPass
 import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
 import {VignetteShader} from '/node_modules/three/examples/jsm/shaders/VignetteShader.js';
 import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/ShaderPass.js';
-import {RenderPixelatedPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPixelatedPass.js';
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
