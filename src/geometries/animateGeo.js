@@ -16,7 +16,7 @@ const clock = new THREE.Clock();
 composer.addPass(renderScene);
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 0.7, 2.2, 0.2);
 composer.addPass(bloomPass);
-const filmPass = new FilmPass(0.2, 1, 750, false);
+const filmPass = new FilmPass(0.2, 1, 10, false);
 composer.addPass(filmPass);
 const glitchPass = new GlitchPass();
 composer.addPass(glitchPass);
@@ -111,21 +111,14 @@ new TWEEN.Tween(camera.position)
 ;
 
 new TWEEN.Tween(octahedronMesh.position)
-    .to({y: 2}, 2500)
+    .to({y: 2}, 5500)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
 ;
 
-new TWEEN.Tween(octahedronMesh.rotation)
-    .to({y: 3 * Math.PI}, 2500)
-    .easing(TWEEN.Easing.Cubic.Out)
-    .yoyo(true)
-    .start();
-;
-
-new TWEEN.Tween(camera.fov)
-    .to({fov: 1}, 2500)
+new TWEEN.Tween(camera)
+    .to({fov: 75}, 4500)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
@@ -139,7 +132,7 @@ function animateShapes() {
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
-    octahedronMesh.rotation.x += 0.02; octahedronMesh.rotation.y += 0.01; octahedronMesh.rotation.z += 0.02;
+    octahedronMesh.rotation.x += 0.001;
     cube.position.y += Math.sin(time) * 0.003;
     cube2.position.y += Math.cos(time) * 0.006;
     dodecahedron.position.y += Math.sin(time) * 0.007;
@@ -148,6 +141,6 @@ function animateShapes() {
     ;
     TWEEN.update();
     composer.render();
-
+    camera.updateProjectionMatrix();
 }
 renderer.setAnimationLoop(animateShapes);
