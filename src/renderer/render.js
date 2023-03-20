@@ -18,7 +18,6 @@ if (window.devicePixelRatio > 1) {
 } else {
     renderer.setPixelRatio(window.devicePixelRatio);
 }
-
 document.body.appendChild(renderer.domElement);
 
 // Resize the renderer when the window resizes, also updates the camera aspect ratio

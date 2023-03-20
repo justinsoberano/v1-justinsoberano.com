@@ -1,5 +1,5 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh, octahedronMesh2} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
@@ -27,7 +27,7 @@ const shaderPass2 = new ShaderPass(FilmShader);
 composer.addPass(shaderPass2);
 
 new TWEEN.Tween(cube.position)
-    .to({y: 1}, 4000)
+    .to({y: 1}, 6000)
     .easing(TWEEN.Easing.Back.Out)
     .yoyo(true)
     .start();
@@ -41,7 +41,7 @@ new TWEEN.Tween(cube.rotation)
 ;
 
 new TWEEN.Tween(cube2.position)
-    .to({y: 4}, 3000)
+    .to({y: 4}, 6000)
     .easing(TWEEN.Easing.Back.Out)
     .yoyo(true)
     .start();
@@ -54,7 +54,7 @@ new TWEEN.Tween(cube2.rotation)
 ;
 
 new TWEEN.Tween(dodecahedron.position)
-    .to({y: -2}, 3000)
+    .to({y: -2}, 7000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
@@ -67,7 +67,7 @@ new TWEEN.Tween(dodecahedron.rotation)
 ;
 
 new TWEEN.Tween(tetrahedron.position)
-    .to({y: -1.5}, 3000)
+    .to({y: -1.5}, 9000)
     .easing(TWEEN.Easing.Back.Out)
     .yoyo(true)
     .start();
@@ -80,7 +80,7 @@ new TWEEN.Tween(tetrahedron.rotation)
 ;
 
 new TWEEN.Tween(spinTop.position)
-    .to({y: 2}, 2500)
+    .to({y: 2.5}, 5000)
     .easing(TWEEN.Easing.Back.Out)
     .yoyo(true)
     .start();
@@ -127,6 +127,13 @@ new TWEEN.Tween(camera)
     .start();
 ;
 
+new TWEEN.Tween(octahedronMesh2.position)
+    .to({y: 50}, 7000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
 function animateShapes() {
 
     const time = clock.getElapsedTime();
@@ -135,12 +142,12 @@ function animateShapes() {
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
-    octahedronMesh.rotation.x += 0.001;
-    cube.position.y += Math.sin(time) * 0.003;
-    cube2.position.y += Math.cos(time) * 0.006;
-    dodecahedron.position.y += Math.sin(time) * 0.007;
-    tetrahedron.position.y += Math.cos(time) * 0.005;
-    spinTop.position.y += Math.cos(time) * 0.004;
+    octahedronMesh.rotation.x += 0.001; octahedronMesh2.rotation.x +=  0.001;
+    cube.position.y += Math.cos(time) * 0.001;
+    cube2.position.y += Math.cos(time) * 0.001;
+    dodecahedron.position.y += Math.sin(time) * 0.001;
+    tetrahedron.position.y += Math.cos(time) * 0.002;
+    spinTop.position.y += Math.sin(time) * 0.003;
     ;
     TWEEN.update();
     composer.render();
