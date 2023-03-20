@@ -18,19 +18,30 @@ loader.load('/node_modules/three/examples/fonts/helvetiker_regular.typeface.json
         height: 0.8,
     });
 
+    const comText = new TextGeometry('.com', {
+        font: font,
+        size: 0.7,
+        height: 0.4,
+    });
+
     const textMaterial = new THREE.MeshNormalMaterial();
     // const lastNameMaterial = new THREE.MeshBasicMaterial({color: 0x910f00});
 
     const first = new THREE.Mesh(firstName, textMaterial);
-    first.position.set(-4.8, 2, -6);
+    first.position.set(-4.8, 1.5, -6);
     first.rotation.set(-0.4, 0.8, 0.6);
 
     const last = new THREE.Mesh(lastName, textMaterial);
-    last.position.set(-4, -0.5, -6);
+    last.position.set(-4, -0.7, -6);
     last.rotation.set(-0.4, 0.8, 0.612);
+
+    const com = new THREE.Mesh(comText, textMaterial);
+    com.position.set(1, 1.3, -17);
+    com.rotation.set(-0.4, 0.8, 0.612);
 
     scene.add(last);
     scene.add(first);
+    scene.add(com);
 
     return {first, last};
 });

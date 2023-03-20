@@ -1,5 +1,5 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh, octahedronMesh2} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh, octahedronMesh2, octahedronMesh3} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
@@ -34,7 +34,7 @@ new TWEEN.Tween(cube.position)
 ;
 
 new TWEEN.Tween(cube.rotation)
-    .to({ y: 3 * Math.PI }, 2000)
+    .to({ x: 3 * Math.PI }, 3000)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .yoyo(true)
     .start();
@@ -47,20 +47,20 @@ new TWEEN.Tween(cube2.position)
     .start();
 ;
 new TWEEN.Tween(cube2.rotation)
-    .to({ z: 3 * Math.PI }, 3000)
-    .easing(TWEEN.Easing.Circular.InOut)
+    .to({ z: 6 * Math.PI }, 3000)
+    .easing(TWEEN.Easing.Quadratic.InOut)
     .yoyo(true)
     .start();
 ;
 
 new TWEEN.Tween(dodecahedron.position)
-    .to({y: -2}, 7000)
+    .to({y: -2}, 3000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
 ;
 new TWEEN.Tween(dodecahedron.rotation)
-    .to({ x: 3 * Math.PI }, 3000)
+    .to({ x: 6 * Math.PI }, 3000)
     .easing(TWEEN.Easing.Quadratic.InOut)
     .yoyo(true)
     .start();
@@ -86,7 +86,7 @@ new TWEEN.Tween(spinTop.position)
     .start();
 ;
 new TWEEN.Tween(spinTop.rotation)
-    .to({ y: 3 * Math.PI }, 2500)
+    .to({ z: 3 * Math.PI }, 3300)
     .easing(TWEEN.Easing.Circular.InOut)
     .yoyo(true)
     .start();
@@ -134,6 +134,13 @@ new TWEEN.Tween(octahedronMesh2.position)
     .start();
 ;
 
+new TWEEN.Tween(octahedronMesh3.position)
+    .to({y: -110}, 10000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
 function animateShapes() {
 
     const time = clock.getElapsedTime();
@@ -142,7 +149,7 @@ function animateShapes() {
     dodecahedron.rotation.x += 0.01; dodecahedron.rotation.y += 0.01; dodecahedron.rotation.z += 0.01;
     tetrahedron.rotation.x += 0.04; tetrahedron.rotation.y += 0.007; tetrahedron.rotation.z += 0.01;
     spinTop.rotation.x += 0.02; spinTop.rotation.y += 0.01; spinTop.rotation.z += 0.02;
-    octahedronMesh.rotation.x += 0.001; octahedronMesh2.rotation.x +=  0.001;
+    octahedronMesh.rotation.x += 0.001; octahedronMesh2.rotation.x +=  0.001; octahedronMesh3.rotation.x += 0.001;
     cube.position.y += Math.cos(time) * 0.001;
     cube2.position.y += Math.cos(time) * 0.001;
     dodecahedron.position.y += Math.sin(time) * 0.001;

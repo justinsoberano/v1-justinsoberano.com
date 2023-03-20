@@ -40,6 +40,7 @@ planeCreator(
 /* Creates the lines for the bottom plane mesh */
 planeLineCreator();
 
+/* Used for the placement of the planets in the background, normally commented out. */
 // const light2 = new THREE.AmbientLight( 0x404040 ); // soft white light
 // scene.add(light2);
 
@@ -50,6 +51,10 @@ scene.add(light3);
 const light = new THREE.PointLight(0xff0000, 10, 150);
 light.position.set( -220, 50, -100 );
 scene.add(light);
+
+const light1 = new THREE.PointLight(0xFFA400, 10, 120);
+light1.position.set(-160, 55, -40 );
+scene.add(light1);
 
 export const octahedronMesh = UniversalMeshCreator(
     new THREE.OctahedronGeometry(125, 10), 
@@ -72,6 +77,16 @@ export const octahedronMesh2 = UniversalMeshCreator(
     -300, -1010, -350
 );
 
+export const octahedronMesh3 = UniversalMeshCreator(
+    new THREE.OctahedronGeometry(125, 4),
+    new THREE.MeshPhongMaterial({
+        color: 0xFFA500,
+        flatShading: true,
+        shininess: 0,
+        reflectivity: 0
+    }),
+    -160, -200, 75
+);
 /* Global material for all meshes */ 
 const norm = new THREE.MeshNormalMaterial({flatShading: true});
 
@@ -81,6 +96,7 @@ export const spinTop = UniversalMeshCreator(
     norm,
     1, 10, 3
 );
+
 export const tetrahedron = UniversalMeshCreator(
     new THREE.TetrahedronGeometry(1.4, 0), 
     norm,
@@ -136,7 +152,7 @@ function planeLineCreator() {
     let pz = -1; let px = 3; let py = -2;
     /* The loop value can be adjusted depending on how thick
        the lines should be, the higher the value the thicker the lines */
-    for(let i = 0; i < 10; i++) {
+    for(let i = 0; i < 20; i++) {
         linePlaneCreator(
             new THREE.WireframeGeometry(
                 new THREE.PlaneGeometry(100, 200, 10, 20)

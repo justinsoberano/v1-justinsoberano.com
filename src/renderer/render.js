@@ -31,7 +31,7 @@ window.addEventListener('resize', function() {
 
 // Creates the scene!!!!! :D
 scene = new THREE.Scene();
-camera = new THREE.PerspectiveCamera(1, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(-10, 2.5, -10);
 
 // These are the default camera rotation values
