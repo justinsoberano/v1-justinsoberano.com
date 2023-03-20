@@ -1,10 +1,3 @@
-/**
- * @author KAPITAN! / http://kapitan.fi
- *
- * Vignette shader.
- * Based on Matt DesLaurie's ShaderLessons and alteredq's sepia shader
- */
-
 THREE.VignetteShader = {
 
 	uniforms: {
