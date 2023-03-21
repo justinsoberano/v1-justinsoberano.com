@@ -1,40 +1,19 @@
 nav {
     position: absolute;
-    background: rgba(22, 22, 23, 0.8);
+    background: rgba(36, 36, 37, 0.8);
     width: 100%;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     height: 50px;
+    width: 200px;
+    margin-top: 100px;
 }
 
-nav > p {
-    color: white;
-    margin-left: 20px;
-    margin-top: 18px;
-    font-family: 'minecraft';
+p {
+    color: #fff;
     font-size: 15px;
-    position: relative;
-    cursor: pointer;
-    display: inline-block;
-
-}
-
-nav > p:hover {
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-}
-
-@font-face {
-    font-family: 'minecraft';
-    src: url('./WebFontKit/minecraftregular-bmg3-webfont.woff2') format('woff2'),
-         url('./WebFontKit/minecraftregular-bmg3-webfont.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'minecraft';
-    src: url('./WebFontKit/minecraftbold-nmk1-webfont.woff2') format('woff2'),
-         url('./WebFontKit/minecraftbold-nmk1-webfont.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+    text-align: center;
+    margin-top: 15px;
 }
