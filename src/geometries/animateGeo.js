@@ -1,19 +1,21 @@
-import * as THREE from '/node_modules/three/build/three.module.js';
+import * as THREE from '../build/three.module.js';
 import {cube, cube2, dodecahedron, tetrahedron, spinTop, 
        octahedronMesh, octahedronMesh2, octahedronMesh3, 
-       plane} from '/src/geometries/geometry.js';
-import {scene, camera, renderer} from '/src/renderer/render.js';
-import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
-import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
-import {EffectComposer} from '/node_modules/three/examples/jsm/postprocessing/EffectComposer.js';
-import {UnrealBloomPass} from '/node_modules/three/examples/jsm/postprocessing/UnrealBloomPass.js';
-import {FilmPass} from '/node_modules/three/examples/jsm/postprocessing/FilmPass.js';
-import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/GlitchPass.js';
-import {VignetteShader} from '/node_modules/three/examples/jsm/shaders/VignetteShader.js';
-import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/ShaderPass.js';
-import {FilmShader} from '/node_modules/three/examples/jsm/shaders/FilmShader.js';
-import {OutlinePass} from '/node_modules/three/examples/jsm/postprocessing/OutlinePass.js';
-import {FXAAShader} from '/node_modules/three/examples/jsm/shaders/FXAAShader.js';
+       plane} from '../geometries/geometry.js';
+import {scene, camera, renderer} from '../renderer/render.js';
+import {TWEEN} from '../post/anim/tween.module.min.js';
+import {RenderPass} from '../renderer/RenderPass/RenderPass.js';
+import {EffectComposer} from '../shaders/composer/EffectComposer.js';
+import {UnrealBloomPass} from '../shaders/pass/UnrealBloomPass.js';
+import {FilmPass} from '../shaders/pass/FilmPass.js';
+import {GlitchPass} from '../shaders/pass/GlitchPass.js';
+import {VignetteShader} from '../shaders/VignetteShader.js';
+import {ShaderPass} from '../shaders/pass/ShaderPass.js';
+import {FilmShader} from '../shaders/FilmShader.js';
+import {OutlinePass} from '../shaders/pass/OutlinePass.js';
+import {FXAAShader} from '../shaders/FXAAShader.js';
+
+/* NEEDS MAJOR CLEANUP AND OPTIMIZATION OH MY GOD */
 
 let selectedObjects = [];
 

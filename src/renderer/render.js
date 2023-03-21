@@ -1,9 +1,7 @@
-import * as THREE from '/node_modules/three/build/three.module.js';
-
-let scene, camera, renderer;
+import * as THREE from '../build/three.module.js';
 
 // Creates the renderer with antialiasing enabled
-renderer = new THREE.WebGLRenderer({
+export const renderer = new THREE.WebGLRenderer({
     antialias: true,
 });
 
@@ -30,11 +28,9 @@ window.addEventListener('resize', function() {
 });
 
 // Creates the scene!!!!! :D
-scene = new THREE.Scene();
-camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
+export const scene = new THREE.Scene();
+export const camera = new THREE.PerspectiveCamera(120, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(-10, 2.5, -10);
 
 // These are the default camera rotation values
 camera.rotation.set(-0.32 , 0.76, -1.2);
-
-export {scene, camera, renderer}; //exportation station 

@@ -1,5 +1,5 @@
-import * as THREE from '/node_modules/three/build/three.module.js';
-import {scene} from '/src/renderer/render.js';
+import * as THREE from '../build/three.module.js';
+import {scene} from '../renderer/render.js';
 
 // This is the pink grid mesh. Not used in the final product.
 // const gridMeshBottom = new THREE.GridHelper(1000, 200, 0x000000, 0xffffff);
