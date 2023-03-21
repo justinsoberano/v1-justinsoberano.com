@@ -46,8 +46,8 @@ class GlitchPass extends Pass {
 			this.uniforms[ 'angle' ].value = MathUtils.randFloat( 0, 1 );
 			this.uniforms[ 'distortion_x' ].value = MathUtils.randFloat( 0, 0.1 ); // 1
 			this.uniforms[ 'distortion_y' ].value = MathUtils.randFloat( 0, 0.1 ); // 1
-			this.uniforms[ 'seed_x' ].value = MathUtils.randFloat( 0, 0.02 );
-			this.uniforms[ 'seed_y' ].value = MathUtils.randFloat( 0, 0.03 );
+			this.uniforms[ 'seed_x' ].value = MathUtils.randFloat( 0, 0.03 );
+			this.uniforms[ 'seed_y' ].value = MathUtils.randFloat( 0, 0 );
 		} else if ( this.goWild == false ) {
 			this.uniforms[ 'byp' ].value = 1;
 		}
