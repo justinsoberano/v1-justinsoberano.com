@@ -83,4 +83,4 @@ const DigitalGlitch = {
 
 };
 
-export { DigitalGlitch };
+export {DigitalGlitch};
