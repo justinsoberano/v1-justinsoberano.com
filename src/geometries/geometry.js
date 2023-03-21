@@ -30,11 +30,11 @@ import {scene} from '/src/renderer/render.js';
 
 /* Creates the bottom plane mesh, color is a dark gray but somehow turns bright gray 
    Most likely due to the lighting in the scene and UnrealBloomPass's bloom effect */
-planeCreator(
+export const plane = planeCreator(
     new THREE.PlaneGeometry(100, 1000, 10, 10),
     new THREE.MeshBasicMaterial({color: 0x343535}),
     -Math.PI / 3, -Math.PI / 4, -0.6,
-    -1, 3, -2
+    -1, 3, -1.8
 );
 
 /* Creates the lines for the bottom plane mesh */
@@ -132,6 +132,7 @@ function planeCreator(shape, material, rx, rz, ry, pz, px, py) {
     mesh.rotateX(rx); mesh.rotateZ(rz); mesh.rotateY(ry); 
     mesh.position.set(px, py, pz);
     scene.add(mesh);
+    return mesh;
 }
 
 /* Line Plane Creator, called by planeLineCreator(...) */

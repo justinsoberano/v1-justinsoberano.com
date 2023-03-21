@@ -1,5 +1,7 @@
 import * as THREE from '/node_modules/three/build/three.module.js';
-import {cube, cube2, dodecahedron, tetrahedron, spinTop, octahedronMesh, octahedronMesh2, octahedronMesh3} from '/src/geometries/geometry.js';
+import {cube, cube2, dodecahedron, tetrahedron, spinTop, 
+       octahedronMesh, octahedronMesh2, octahedronMesh3, 
+       plane} from '/src/geometries/geometry.js';
 import {scene, camera, renderer} from '/src/renderer/render.js';
 import {TWEEN} from '/node_modules/three/examples/jsm/libs/tween.module.min.js';
 import {RenderPass} from '/node_modules/three/examples/jsm/postprocessing/RenderPass.js';
@@ -10,12 +12,23 @@ import {GlitchPass} from '/node_modules/three/examples/jsm/postprocessing/Glitch
 import {VignetteShader} from '/node_modules/three/examples/jsm/shaders/VignetteShader.js';
 import {ShaderPass} from '/node_modules/three/examples/jsm/postprocessing/ShaderPass.js';
 import {FilmShader} from '/node_modules/three/examples/jsm/shaders/FilmShader.js';
+import {OutlinePass} from '/node_modules/three/examples/jsm/postprocessing/OutlinePass.js';
+import {FXAAShader} from '/node_modules/three/examples/jsm/shaders/FXAAShader.js';
+
+let selectedObjects = [];
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+const obj3d = new THREE.Object3D();
+const group = new THREE.Group();
+
 
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
 const clock = new THREE.Clock();
 composer.addPass(renderScene);
-const bloomPass = new UnrealBloomPass(new THREE.Vector2(1920, 1080), 0.7, 2.2, 0.2);
+const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innetHeight), 0.7, 2.2, 0.2);
 composer.addPass(bloomPass);
 const filmPass = new FilmPass(0.2, 1, 10, false);
 composer.addPass(filmPass);
@@ -25,6 +38,41 @@ const shaderPass = new ShaderPass(VignetteShader);
 composer.addPass(shaderPass);
 const shaderPass2 = new ShaderPass(FilmShader);
 composer.addPass(shaderPass2);
+const outlinePass = new OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
+composer.addPass(outlinePass);
+outlinePass.edgeStrength = 3;
+outlinePass.edgeGlow = 1;
+outlinePass.edgeThickness = 4;
+const effectFXAA = new ShaderPass( FXAAShader );
+effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+composer.addPass(effectFXAA);
+
+renderer.domElement.style.touchAction = 'none';
+renderer.domElement.addEventListener('pointermove', onPointerMove);
+
+function onPointerMove(event) {
+    if (event.isPrimary === false ) return;
+    mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+    mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+    checkIntersection();
+}
+
+function addSelectedObject( object ) {
+    selectedObjects = [];
+    selectedObjects.push( object );
+}
+
+function checkIntersection() {
+    raycaster.setFromCamera( mouse, camera );
+    const intersects = raycaster.intersectObject( scene, true );
+    if (intersects.length > 0 ) {
+        const selectedObject = intersects[ 0 ].object;
+        addSelectedObject( selectedObject );
+        outlinePass.selectedObjects = selectedObjects;
+    } else {
+        // outlinePass.selectedObjects = [];
+    }
+}
 
 new TWEEN.Tween(cube.position)
     .to({y: 1}, 6000)
@@ -136,6 +184,13 @@ new TWEEN.Tween(octahedronMesh2.position)
 
 new TWEEN.Tween(octahedronMesh3.position)
     .to({y: -110}, 10000)
+    .easing(TWEEN.Easing.Cubic.Out)
+    .yoyo(true)
+    .start();
+;
+
+new TWEEN.Tween(plane.position)
+    .to({y: -2}, 10000)
     .easing(TWEEN.Easing.Cubic.Out)
     .yoyo(true)
     .start();
