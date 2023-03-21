@@ -20,10 +20,6 @@ let selectedObjects = [];
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 
-const obj3d = new THREE.Object3D();
-const group = new THREE.Group();
-
-
 const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
 const clock = new THREE.Clock();
@@ -44,7 +40,7 @@ outlinePass.edgeStrength = 3;
 outlinePass.edgeGlow = 1;
 outlinePass.edgeThickness = 4;
 const effectFXAA = new ShaderPass( FXAAShader );
-effectFXAA.uniforms[ 'resolution' ].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
+effectFXAA.uniforms['resolution'].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
 composer.addPass(effectFXAA);
 
 renderer.domElement.style.touchAction = 'none';
@@ -59,15 +55,17 @@ function onPointerMove(event) {
 
 function addSelectedObject( object ) {
     selectedObjects = [];
-    selectedObjects.push( object );
+    selectedObjects.push(object);
 }
 
 function checkIntersection() {
-    raycaster.setFromCamera( mouse, camera );
-    const intersects = raycaster.intersectObject( scene, true );
-    if (intersects.length > 0 ) {
-        const selectedObject = intersects[ 0 ].object;
-        addSelectedObject( selectedObject );
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObject(scene, true);
+    if (intersects.length > 0 && intersects[0].object === cube || 
+        intersects[0].object === cube2 || intersects[0].object === dodecahedron || 
+        intersects[0].object === tetrahedron || intersects[0].object === spinTop) {
+        const selectedObject = intersects[0].object;
+        addSelectedObject(selectedObject);
         outlinePass.selectedObjects = selectedObjects;
     } else {
         // outlinePass.selectedObjects = [];
@@ -211,8 +209,10 @@ function animateShapes() {
     tetrahedron.position.y += Math.cos(time) * 0.002;
     spinTop.position.y += Math.sin(time) * 0.003;
     ;
+
     TWEEN.update();
     composer.render();
     camera.updateProjectionMatrix();
+
 }
 renderer.setAnimationLoop(animateShapes);
