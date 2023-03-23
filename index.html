@@ -11,8 +11,7 @@
 </head>
 <body onload="playSound()">
   <script>
-    var play = true;
-    let playSound = () => { if (play) { let audio = new Audio('sounds/jsb.m4a').play(); play = false;}}
+    let playSound = () => {let audio = new Audio('sounds/jsb.m4a').play();}
   </script>
   <script src="src/renderer/render.js" type="module"></script>
   <script src="src/geometries/geometry.js" type="module"></script>
