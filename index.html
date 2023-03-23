@@ -9,8 +9,11 @@
   <link rel="icon" href="favicon.png">
   <style> body {margin:0;} </style>
 </head>
-<body>
-  <embed src="sounds/jsb.m4a" autostart="true" loop="true" width="0" height="0" style="margin:0; position:absolute ">
+<body onload="playSound()">
+  <script>
+    var play = true;
+    let playSound = () => { if (play) { let audio = new Audio('sounds/jsb.m4a').play(); play = false;}}
+  </script>
   <script src="src/renderer/render.js" type="module"></script>
   <script src="src/geometries/geometry.js" type="module"></script>
   <script src="src/geometries/animateGeo.js" type="module"></script>
