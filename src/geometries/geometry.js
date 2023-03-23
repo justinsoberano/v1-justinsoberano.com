@@ -37,6 +37,13 @@ export const plane = planeCreator(
     -1, 3, -1.8
 );
 
+planeCreator(
+    new THREE.PlaneGeometry(1000, 1000, 1, 1),
+    new THREE.MeshBasicMaterial({color: 0x000000}),
+    0, 0, 1,
+    -400, -900, -100
+)
+
 /* Creates the lines for the bottom plane mesh */
 planeLineCreator();
 

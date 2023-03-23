@@ -70,7 +70,8 @@ function checkIntersection() {
         addSelectedObject(selectedObject);
         outlinePass.selectedObjects = selectedObjects;
     } else {
-        // outlinePass.selectedObjects = [];
+        outlinePass.selectedObjects = [];
+        console.log("N")
     }
 }
 
