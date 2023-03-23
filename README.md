@@ -6,5 +6,9 @@ Heavily Inspired by the 1980s <a href="https://rare-gallery.com/mocahbig/460738-
 
 Currently a work in progress.
 
+Make sure to have enable auto-play!
+Safari: Right click -> Settings for justinsoberano.com -> Auto-Play: Allow All Auto-Play
+Chrome: Right click -> Play Sound
+
 ![35%](https://progress-bar.dev/35)
 
