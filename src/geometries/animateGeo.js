@@ -18,6 +18,7 @@ import {FXAAShader} from '../shaders/FXAAShader.js';
 /* NEEDS MAJOR CLEANUP AND OPTIMIZATION OH MY GOD */
 
 let selectedObjects = [];
+let play = true;
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -26,6 +27,11 @@ const composer = new EffectComposer(renderer);
 const renderScene = new RenderPass(scene, camera);
 const clock = new THREE.Clock();
 composer.addPass(renderScene);
+const outlinePass = new OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
+composer.addPass(outlinePass);
+outlinePass.edgeStrength = 3;
+outlinePass.edgeGlow = 1.25;
+outlinePass.edgeThickness = 4;
 const bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innetHeight), 0.7, 2.2, 0.2);
 composer.addPass(bloomPass);
 const filmPass = new FilmPass(0.2, 1, 10, false);
@@ -36,11 +42,6 @@ const shaderPass = new ShaderPass(VignetteShader);
 composer.addPass(shaderPass);
 const shaderPass2 = new ShaderPass(FilmShader);
 composer.addPass(shaderPass2);
-const outlinePass = new OutlinePass( new THREE.Vector2( window.innerWidth, window.innerHeight ), scene, camera );
-composer.addPass(outlinePass);
-outlinePass.edgeStrength = 3;
-outlinePass.edgeGlow = 1;
-outlinePass.edgeThickness = 4;
 const effectFXAA = new ShaderPass( FXAAShader );
 effectFXAA.uniforms['resolution'].value.set( 1 / window.innerWidth, 1 / window.innerHeight );
 composer.addPass(effectFXAA);
@@ -69,8 +70,15 @@ function checkIntersection() {
         const selectedObject = intersects[0].object;
         addSelectedObject(selectedObject);
         outlinePass.selectedObjects = selectedObjects;
+        
+        let playSound = () => {let audio = new Audio('../../sounds/hover.m4a').play();}
+        if(play == true) {
+            playSound();
+            play = false;
+        }
     } else {
         outlinePass.selectedObjects = [];
+        play = true;
         console.log("N")
     }
 }
