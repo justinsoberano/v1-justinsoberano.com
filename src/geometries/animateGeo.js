@@ -119,7 +119,7 @@ function checkIntersection() {
                 .yoyo(true)
                 .start();
             aboutOpacity = new TWEEN.Tween(aboutMat)
-                .to({opacity: 1}, 30)
+                .to({opacity: 1}, 50)
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .yoyo(true)
                 .start();
@@ -144,7 +144,7 @@ function checkIntersection() {
                 .yoyo(true)
                 .start();
             projOpacity = new TWEEN.Tween(projectMat)
-                .to({opacity: 1}, 30)
+                .to({opacity: 1}, 50)
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .yoyo(true)
                 .start();
@@ -207,7 +207,7 @@ function checkIntersection() {
                 .yoyo(true)
                 .start();
             contactOpacity = new TWEEN.Tween(contactMat)
-                .to({opacity: 1}, 30)
+                .to({opacity: 1}, 50)
                 .easing(TWEEN.Easing.Quadratic.InOut)
                 .yoyo(true)
                 .start();

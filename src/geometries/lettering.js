@@ -61,31 +61,31 @@ export let generate3D = () => {
     const experiencesText = new TextGeometry('experiences', {
         font: helvetica,
         size: 2,
-        height: 0.8,
+        height: 0.4,
     });
 
     const projectText = new TextGeometry('projects', {
         font: helvetica,
         size: 2,
-        height: 0.8,
+        height: 0.4,
     });
 
     const aboutText = new TextGeometry('about me', {
         font: helvetica,
         size: 2,
-        height: 0.8,
+        height: 0.4,
     });
 
     const contactText = new TextGeometry('contact', {
         font: helvetica,
         size: 2,
-        height: 0.8,
+        height: 0.4,
     });
 
     const other = new TextGeometry('2D website', {
         font: helvetica,
         size: 2,
-        height: 0.8,
+        height: 0.4,
     });
 
 
