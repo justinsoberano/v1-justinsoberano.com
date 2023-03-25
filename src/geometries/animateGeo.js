@@ -14,11 +14,20 @@ import {ShaderPass} from '../shaders/pass/ShaderPass.js';
 import {FilmShader} from '../shaders/FilmShader.js';
 import {OutlinePass} from '../shaders/pass/OutlinePass.js';
 import {FXAAShader} from '../shaders/FXAAShader.js';
+import {l, f, c, manager, generate3D, 
+       websiteName, experiencesMat, 
+       projectMat, aboutMat, contactMat, otherMat} from './lettering.js';
 
 /* NEEDS MAJOR CLEANUP AND OPTIMIZATION OH MY GOD */
 
+manager.onLoad = () => {
+    generate3D();
+}
+
 let selectedObjects = [];
 let play = true;
+var expo;
+let textOpacity, expOpacity, projOpacity, aboutOpacity, contactOpacity, otherOpacity;
 
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
@@ -76,10 +85,263 @@ function checkIntersection() {
             playSound();
             play = false;
         }
+
+        if(intersects[0].object === cube2) {
+            console.log("CUBE2")
+            var highestTimeoutId = setTimeout(";");
+            for (var i = 0 ; i < highestTimeoutId ; i++) {
+                clearTimeout(i); 
+            }
+            experiencesMat.depthWrite = false;
+            projectMat.depthWrite = false;
+            websiteName.depthWrite = false;
+            otherMat.depthWrite = false;
+            aboutMat.depthWrite = true;
+            contactMat.depthWrite = false;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 0}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 1}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+        }
+        if(intersects[0].object === cube) {
+            console.log("CUBE")
+            var highestTimeoutId = setTimeout(";");
+            for (var i = 0 ; i < highestTimeoutId ; i++) {
+                clearTimeout(i); 
+            }
+            experiencesMat.depthWrite = false;
+            projectMat.depthWrite = true;
+            websiteName.depthWrite = false;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 0}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 1}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+        }
+        if(intersects[0].object === dodecahedron) {
+            console.log("DODECAHEDRON")
+            var highestTimeoutId = setTimeout(";");
+            for (var i = 0 ; i < highestTimeoutId ; i++) {
+                clearTimeout(i); 
+            }
+            experiencesMat.depthWrite = false;
+            projectMat.depthWrite = false;
+            websiteName.depthWrite = false;
+            otherMat.depthWrite = false;
+            aboutMat.depthWrite = false;
+            contactMat.depthWrite = true;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 0}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 1}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+        }
+        if(intersects[0].object === tetrahedron) {
+            console.log("TETRAHEDRON")
+            var highestTimeoutId = setTimeout(";");
+            for (var i = 0 ; i < highestTimeoutId ; i++) {
+                clearTimeout(i); 
+            }
+            experiencesMat.depthWrite = false;
+            projectMat.depthWrite = false;
+            websiteName.depthWrite = false;
+            otherMat.depthWrite = true;
+            aboutMat.depthWrite = false;
+            contactMat.depthWrite = false;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 0}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 1}, 50)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+        }
+        if(intersects[0].object === spinTop) {
+            console.log("SPINTOP")
+            var highestTimeoutId = setTimeout(";");
+            for (var i = 0 ; i < highestTimeoutId ; i++) {
+                clearTimeout(i); 
+            }
+            experiencesMat.depthWrite = true;
+            projectMat.depthWrite = false;
+            websiteName.depthWrite = false;
+            otherMat.depthWrite = false;
+            aboutMat.depthWrite = false;
+            contactMat.depthWrite = false;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 0}, 30)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 1}, 50)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 0}, 20)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+        }
+
     } else {
         outlinePass.selectedObjects = [];
         play = true;
-        console.log("N")
+        console.log("RESET")
+        expo = setTimeout(() => {
+            experiencesMat.depthWrite = false;
+            projectMat.depthWrite = false;
+            websiteName.depthWrite = true;
+            otherMat.depthWrite = false;
+            aboutMat.depthWrite = false;
+            contactMat.depthWrite = false;
+            textOpacity = new TWEEN.Tween(websiteName)
+                .to({opacity: 1}, 1500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+             expOpacity = new TWEEN.Tween(experiencesMat)
+                .to({opacity: 0}, 500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            projOpacity = new TWEEN.Tween(projectMat)
+                .to({opacity: 0}, 500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+                otherOpacity = new TWEEN.Tween(otherMat)
+                .to({opacity: 0}, 500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            aboutOpacity = new TWEEN.Tween(aboutMat)
+                .to({opacity: 0}, 500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            contactOpacity = new TWEEN.Tween(contactMat)
+                .to({opacity: 0}, 500)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .yoyo(true)
+                .start();
+            console.log('set');
+        }, 2500);
     }
 }
 
