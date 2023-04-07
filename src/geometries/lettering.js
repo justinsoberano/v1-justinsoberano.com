@@ -2,7 +2,6 @@ import * as THREE from '../build/three.module.js';
 import {FontLoader} from '../post/font/FontLoader.js';
 import {TextGeometry} from '../post/font/TextGeometry.js';
 import {scene} from '../renderer/render.js';
-import {TWEEN} from '../post/anim/tween.module.min.js';
 
 export let f, l, c;
 export let helvetica;
@@ -76,13 +75,19 @@ export let generate3D = () => {
         height: 0.4,
     });
 
-    const contactText = new TextGeometry('contact', {
+    const contactText = new TextGeometry('involvement', {
         font: helvetica,
         size: 2,
         height: 0.4,
     });
 
-    const other = new TextGeometry('2D website', {
+    const otherlower = new TextGeometry('check out my', {
+        font: helvetica,
+        size: 0.7,
+        height: 0.4,
+    });
+
+    const other = new TextGeometry('resume', {
         font: helvetica,
         size: 2,
         height: 0.4,
@@ -118,6 +123,10 @@ export let generate3D = () => {
     o.position.set(-4.77, .5, -6);
     o.rotation.set(-0.4, 0.8, 0.6);
 
+    const olower = new THREE.Mesh(otherlower, otherMat);
+    olower.position.set(-5.5, 2.1, -6);
+    olower.rotation.set(-0.4, 0.8, 0.6);
+
     const t = new THREE.Mesh(contactText, contactMat);
     t.position.set(-4.76, .5, -6);
     t.rotation.set(-0.4, 0.8, 0.6);
@@ -130,5 +139,6 @@ export let generate3D = () => {
     scene.add(a);
     scene.add(t);
     scene.add(o);
+    scene.add(olower);
 
 }
